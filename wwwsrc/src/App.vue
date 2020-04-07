@@ -24,4 +24,5 @@ export default {
 @import "./assets/_variables.scss";
 @import "bootstrap";
 @import "./assets/_overrides.scss";
+@import "node_modules/bootstrap/scss/bootstrap";
 </style>
