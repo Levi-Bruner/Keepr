@@ -26,9 +26,9 @@ namespace Keepr.Services
       }
       return found;
     }
-    internal object GetUserKeeps(string userId)
+    internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int vaultId, string userId)
     {
-      throw new NotImplementedException();
+      return _repo.GetKeepsByVaultId(vaultId, userId);
     }
     // POST
     public Keep Create(Keep newKeep)

@@ -41,7 +41,7 @@
 -- )
 
 
--- -- USE THIS LINE FOR GET KEEPS BY VAULTID
+-- -- -- USE THIS LINE FOR GET KEEPS BY VAULTID
 -- SELECT 
 -- k.*,
 -- vk.id as vaultKeepId

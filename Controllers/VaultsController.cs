@@ -16,11 +16,12 @@ namespace Keepr.Controllers
   public class VaultsController : ControllerBase
   {
     private readonly VaultsService _vs;
-    public VaultsController(VaultsService vs)
+    private readonly KeepsService _ks;
+    public VaultsController(VaultsService vs, KeepsService ks)
     {
       _vs = vs;
+      _ks = ks;
     }
-    //FIXME get all not working
     [HttpGet]
     [Authorize]
     public ActionResult<IEnumerable<Vault>> GetAll()
@@ -54,6 +55,22 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
+
+    [HttpGet("{vaultId}/keeps")]
+    [Authorize]
+    public ActionResult<IEnumerable<Keep>> GetKeepsByVaultId(int vaultId)
+    {
+      try
+      {
+        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        return Ok(_ks.GetKeepsByVaultId(vaultId, userId));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
     [HttpPost]
     [Authorize]
     public ActionResult<Vault> Post([FromBody] Vault newVault)
