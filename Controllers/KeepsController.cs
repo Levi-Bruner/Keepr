@@ -56,23 +56,6 @@ namespace Keepr.Controllers
       }
     }
 
-    //FIXME this mehtod should be GetUserVaults
-    // [HttpGet()]
-    // [Authorize]
-    // public ActionResult<IEnumerable<Keep>> GetUserKeeps()
-    // {
-    //   try
-    //   {
-    //     string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-    //     return Ok(_ks.GetUserKeeps(userId));
-    //   }
-    //   catch (Exception e)
-    //   {
-    //     return BadRequest(e.Message);
-    //   }
-
-    // }
-
     [HttpPost]
     [Authorize]
     public ActionResult<Keep> Post([FromBody] Keep newKeep)
