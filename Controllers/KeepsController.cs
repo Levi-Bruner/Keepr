@@ -33,7 +33,6 @@ namespace Keepr.Controllers
       };
     }
     [HttpGet("{id}")]
-    [Authorize]
     public ActionResult<Keep> Get(int id)
     {
       try

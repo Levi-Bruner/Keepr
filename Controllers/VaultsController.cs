@@ -20,13 +20,15 @@ namespace Keepr.Controllers
     {
       _vs = vs;
     }
+    //FIXME get all not working
     [HttpGet]
     [Authorize]
-    public ActionResult<IEnumerable<Vault>> Get()
+    public ActionResult<IEnumerable<Vault>> GetAll()
     {
       try
       {
-        return Ok(_vs.Get());
+        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        return Ok(_vs.GetAll(userId));
       }
       catch (Exception e)
       {
