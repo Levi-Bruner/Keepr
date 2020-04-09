@@ -34,18 +34,17 @@
 </template>
 
 <script>
-import axios from "axios";
-
-let _api = axios.create({
-  baseURL: "https://localhost:5001",
-  withCredentials: true
-});
+import { setBearer } from "../store/AxiosService";
 export default {
   name: "Navbar",
   methods: {
     async login() {
       await this.$auth.loginWithPopup();
-      this.$store.dispatch("setBearer", this.$auth.bearer);
+      // this.$store.dispatch("setBearer", this.$auth.bearer);
+      if (this.$auth.isAuthenticated) {
+        setBearer(this.$auth.bearer);
+        this.$store.dispatch("getVaults");
+      }
       console.log("this.$auth.user: ");
       console.log(this.$auth.user);
     },

@@ -10,9 +10,10 @@
             class="text-center"
           >Views: {{activeKeep.Views}} - Keeps: {{activeKeep.Keeps}} - Shares: {{activeKeep.Shares}}</p>
           <button @click="deleteKeep" title="Delete this Keep" class="btn btn-danger">X</button>
-          <!-- <select v-model="newId">
-            <option v-for="list in lists" :key="list.id" :value="list.id">{{list.title}}</option>
-          </select>-->
+          <select v-model="vaultId">
+            <option v-for="vault in vaults" :key="vault.id" :value="vault.id">{{vault.name}}</option>
+          </select>
+          <button @click="addToVault" class="btn btn-primary">Save</button>
           <div>
             <form @submit.prevent="editKeep">
               <input type="text" placeholder="name" v-model="activeKeep.Name" />
@@ -29,15 +30,21 @@
 <script>
 export default {
   name: "KeepDetails",
+  mounted() {
+    return this.$store.dispatch("getVaults");
+  },
   data() {
     return {
-      newEdit: {},
-      newId: ""
+      vaultId: "",
+      keepId: ""
     };
   },
   computed: {
     activeKeep() {
       return this.$store.state.activeKeep;
+    },
+    vaults() {
+      return this.$store.state.userVaults;
     }
   },
   methods: {
@@ -49,6 +56,13 @@ export default {
     },
     deleteKeep() {
       this.$store.dispatch("deleteKeep", this.activeKeep.Id);
+    },
+    addToVault() {
+      let newSave = {
+        vaultId: this.vaultId,
+        keepId: this.activeKeep.Id
+      };
+      this.$store.dispatch("addToVault", newSave);
     }
   }
 };

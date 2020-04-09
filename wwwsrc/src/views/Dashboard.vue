@@ -16,9 +16,7 @@
 import Vault from "../components/Vault";
 export default {
   name: "Dashboard",
-  mounted() {
-    return this.$store.dispatch("getVaults");
-  },
+  mounted() {},
   computed: {
     userVaults() {
       return this.$store.state.userVaults;

@@ -16,8 +16,8 @@ namespace Keepr.Repositories
 
     internal IEnumerable<Vault> GetAll(string userId)
     {
-      string sql = "SELECT * FROM vaults WHERE UserId = @userId";
-      return _db.Query<Vault>(sql, new { UserId = @userId });
+      string sql = "SELECT * FROM vaults WHERE userId = @UserId";
+      return _db.Query<Vault>(sql, new { userId });
     }
 
     internal Vault Get(int id)

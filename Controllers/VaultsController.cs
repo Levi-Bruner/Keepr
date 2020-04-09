@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace Keepr.Controllers
 {
   [ApiController]
+  [Authorize]
   [Route("api/[controller]")]
   public class VaultsController : ControllerBase
   {
@@ -23,7 +24,6 @@ namespace Keepr.Controllers
       _ks = ks;
     }
     [HttpGet]
-    [Authorize]
     public ActionResult<IEnumerable<Vault>> GetAll()
     {
       try
@@ -37,7 +37,6 @@ namespace Keepr.Controllers
       };
     }
     [HttpGet("{id}")]
-    [Authorize]
     public ActionResult<Vault> Get(int id)
     {
       try
@@ -57,7 +56,6 @@ namespace Keepr.Controllers
     }
 
     [HttpGet("{vaultId}/keeps")]
-    [Authorize]
     public ActionResult<IEnumerable<Keep>> GetKeepsByVaultId(int vaultId)
     {
       try
@@ -72,7 +70,6 @@ namespace Keepr.Controllers
     }
 
     [HttpPost]
-    [Authorize]
     public ActionResult<Vault> Post([FromBody] Vault newVault)
     {
       try
@@ -86,14 +83,7 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
-    // [HttpPut("{id}")]
-    // [Authorize]
-    // public ActionResult<Vault> Edit(int id, [FromBody] Vault updatedVault)
-    // {
-
-    // }
     [HttpDelete("{id}")]
-    [Authorize]
     public ActionResult<Vault> Delete(int id)
     {
       try

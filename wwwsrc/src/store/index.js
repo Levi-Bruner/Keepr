@@ -83,6 +83,14 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async addToVault({ commit, dispatch }, newSave) {
+      debugger
+      try {
+        let res = await api.post('vaultkeeps', newSave)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async editKeep({ commit, dispatch }, newEdit) {
       try {
         let res = await api.put("/keeps/" + newEdit.Id, newEdit);
@@ -109,8 +117,7 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error);
       }
-    }
-    ,
+    },
     async addView({ commit, dispatch }, keep) {
       try {
         let modViews = keep.Views + 1;
