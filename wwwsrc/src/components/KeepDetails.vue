@@ -4,12 +4,15 @@
       <div class="card bg-dark text-white">
         <img class="card-img" :src="activeKeep.Img" alt />
         <div class="card-body">
-          <h4 class="card-title">{{activeKeep.Title}}</h4>
+          <p class="card-title">{{activeKeep.Title}}</p>
           <p class="card-text text-center">{{activeKeep.Description}}</p>
           <p
             class="text-center"
           >Views: {{activeKeep.Views}} - Keeps: {{activeKeep.Keeps}} - Shares: {{activeKeep.Shares}}</p>
           <button @click="deleteKeep" title="Delete this Keep" class="btn btn-danger">X</button>
+          <!-- <select v-model="newId">
+            <option v-for="list in lists" :key="list.id" :value="list.id">{{list.title}}</option>
+          </select>-->
           <div>
             <form @submit.prevent="editKeep">
               <input type="text" placeholder="name" v-model="activeKeep.Name" />
@@ -28,7 +31,8 @@ export default {
   name: "KeepDetails",
   data() {
     return {
-      newEdit: {}
+      newEdit: {},
+      newId: ""
     };
   },
   computed: {
