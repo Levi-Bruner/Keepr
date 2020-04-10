@@ -27,6 +27,13 @@ namespace Keepr.Repositories
       return _db.QueryFirstOrDefault<Keep>(sql, new { Id = id });
     }
 
+    internal object GetUserKeeps(string userId)
+    {
+      string sql = @"
+      SELECT * FROM keeps WHERE userId = @UserId";
+      return _db.Query<Keep>(sql, new { userId });
+    }
+
     internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int vaultId, string userId)
     {
       string sql = @"

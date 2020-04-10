@@ -40,7 +40,7 @@ export default {
   methods: {
     async login() {
       await this.$auth.loginWithPopup();
-      // this.$store.dispatch("setBearer", this.$auth.bearer);
+      await this.$auth.getUserData();
       if (this.$auth.isAuthenticated) {
         setBearer(this.$auth.bearer);
         this.$store.dispatch("getVaults");
