@@ -4,7 +4,7 @@
 
     <form class="text-center" @submit.prevent="addKeep">
       <h3 class="text-center">Make a new Keep</h3>
-      <div style="list-style-type:none">
+      <div class="inputs">
         <input type="text" placeholder="title" v-model="newKeep.Name" required />
         <br />
         <input type="text" placeholder="description" v-model="newKeep.Description" />
