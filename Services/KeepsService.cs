@@ -51,6 +51,9 @@ namespace Keepr.Services
       found.Description = updatedKeep.Description != null ? updatedKeep.Description : found.Description;
       found.Img = updatedKeep.Img;
       found.IsPrivate = updatedKeep.IsPrivate;
+      found.Views = updatedKeep.Views;
+      found.Shares = updatedKeep.Shares;
+      found.Keeps = updatedKeep.Keeps;
       return _repo.Edit(found);
     }
     //DELETE

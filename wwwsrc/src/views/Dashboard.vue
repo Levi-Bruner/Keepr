@@ -1,11 +1,19 @@
 <template>
   <div class="dashboard">
     <h1 class="text-center">DASHBOARD</h1>
-    <h3>Make a new Vault</h3>
-    <form @submit.prevent="addVault">
-      <input type="text" placeholder="title" v-model="newVault.Name" required />
-      <input type="text" placeholder="description" v-model="newVault.Description" />
-      <button type="submit" title="Make new Vault" class="btn btn-primary btn-lg">+</button>
+    <h3 class="text-center">Make a new Vault</h3>
+    <form class="text-center" @submit.prevent="addVault">
+      <ul style="list-style-type:none">
+        <li>
+          <input type="text" placeholder="title" v-model="newVault.Name" required />
+        </li>
+        <li>
+          <input type="text" placeholder="description" v-model="newVault.Description" />
+        </li>
+        <li>
+          <button type="submit" title="Make new Vault" class="btn btn-primary btn-lg">+</button>
+        </li>
+      </ul>
     </form>
 
     <h3 class="text-center">My Vaults</h3>

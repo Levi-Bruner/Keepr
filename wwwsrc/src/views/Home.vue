@@ -1,13 +1,19 @@
 <template>
   <div class="home container-fluid">
-    <h1>Welcome Home</h1>
+    <h1 class="text-center">HOME</h1>
 
-    <form @submit.prevent="addKeep">
-      <input type="text" placeholder="title" v-model="newKeep.Name" required />
-      <input type="text" placeholder="description" v-model="newKeep.Description" />
-      <input type="text" placeholder="img URL" v-model="newKeep.Img" />
-      <input type="checkbox" id="checkbox" v-model="newKeep.isPrivate" />
-      <label for="checkbox">{{newKeep.isPrivate}}</label>
+    <form class="text-center" @submit.prevent="addKeep">
+      <h3 class="text-center">Make a new Keep</h3>
+      <div style="list-style-type:none">
+        <input type="text" placeholder="title" v-model="newKeep.Name" required />
+        <br />
+        <input type="text" placeholder="description" v-model="newKeep.Description" />
+        <br />
+        <input type="text" placeholder="img URL" v-model="newKeep.Img" />
+        <br />
+        <h6>Mark as Private?</h6>
+        <input type="checkbox" id="checkbox" v-model="newKeep.isPrivate" />
+      </div>
       <button type="submit" title="Make new Keep" class="btn btn-primary btn-lg">+</button>
     </form>
 

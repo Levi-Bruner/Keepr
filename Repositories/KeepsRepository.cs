@@ -66,6 +66,9 @@ namespace Keepr.Repositories
             description = @Description,
             img = @Img,
             isPrivate = @IsPrivate
+            views = @Views
+            keeps = @Keeps
+            shares = @Shares
         WHERE id = @Id
         ";
       _db.Execute(sql, updatedKeep);

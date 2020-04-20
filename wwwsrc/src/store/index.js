@@ -55,8 +55,8 @@ export default new Vuex.Store({
       api.defaults.headers.authorization = "";
     },
     async setActiveKeep({ commit, dispatch }, keep) {
-      commit("setActiveKeep", keep)
       await dispatch("addView", keep)
+      await commit("setActiveKeep", keep)
     },
     async getPublicKeeps({ commit, dispatch }) {
       let res = await api.get("keeps");
@@ -125,9 +125,10 @@ export default new Vuex.Store({
       }
     },
     async addView({ commit, dispatch }, keep) {
+      debugger
       try {
         let modViews = keep.Views + 1;
-        let res = await api.put("/keeps/" + keep.Id, { Views: modViews, Img: keep.Img, Description: keep.Description, Name: keep.Name, UserId: keep.UserId, Shares: keep.Shares, Keeps: keep.Keeps, IsPrivate: keep.IsPrivate, Id: keep.Id })
+        let res = await api.put("/keeps/" + keep.Id, { Views: modViews, UserId: keep.UserId, Id: keep.Id, Img: keep.Img, Description: keep.Description, Name: keep.Name })
         // commit("setActiveKeep", res.data)
       }
       catch (error) {

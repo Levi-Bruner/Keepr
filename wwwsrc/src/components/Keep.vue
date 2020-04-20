@@ -5,6 +5,7 @@
       <div class="card-body">
         <h4 class="card-title">{{keepData.name}}</h4>
         <p class="card-text">{{keepData.description}}</p>
+        <p>Views: {{keepData.views}} - Keeps: {{keepData.keeps}} - Shares: {{keepData.shares}}</p>
       </div>
     </router-link>
   </div>
@@ -37,13 +38,6 @@ export default {
       };
       this.$store.dispatch("setActiveKeep", activeKeep);
     }
-    // addView() {
-    //   this.$store.dispatch(
-    //     "addView",
-    //     this.activeKeep.Id,
-    //     this.activeKeep.Views
-    //   );
-    // }
   }
 };
 </script>
